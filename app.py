@@ -1,6 +1,11 @@
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+
+
+st.header('Proyecto Sprint 7 - Ana Maria Rincón')
+
+st.write('Esta aplicación muestra un histograma y un gráfico de dispersion para un df de autos')
      
 car_data = pd.read_csv('datasets/vehicles_us.csv') # leer los datos
 hist_button = st.button('Construir histograma') # crear un botón
@@ -16,3 +21,16 @@ if hist_button: # al hacer clic en el botón
     st.plotly_chart(fig, use_container_width=True)
 
 
+# agrego el otro botón para la gráfica de dispersión
+car_data = pd.read_csv('datasets/vehicles_us.csv') # leer los datos
+hist_button = st.button('Construir Gráfico de Dispersión') # crear un botón
+     
+if hist_button: # al hacer clic en el botón
+    # escribir un mensaje
+    st.write('Creación de un gráfico de dispersión para el conjunto de datos de anuncios de venta de coches')
+         
+    # crear un gráfico de dispersión
+    fig = px.scatter(car_data, x="odometer", y="price", color="type")
+     
+    # mostrar un gráfico Plotly interactivo
+    st.plotly_chart(fig, use_container_width=True)
